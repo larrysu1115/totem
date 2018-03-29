@@ -67,7 +67,7 @@ def cnn_model_fn(features, labels, mode):
             loss=loss,
             global_step=tf.train.get_global_step())
         tensors_to_log = {"loss": loss}
-        logging_hook = tf.train.LoggingTensorHook(tensors=tensors_to_log, every_n_iter=20)
+        logging_hook = tf.train.LoggingTensorHook(tensors=tensors_to_log, every_n_iter=50)
         return tf.estimator.EstimatorSpec(
             mode=mode,
             loss=loss,
@@ -79,7 +79,7 @@ def cnn_model_fn(features, labels, mode):
         'accuracy': tf.metrics.accuracy(labels=labels, predictions=predictions['classes'])}
     return tf.estimator.EstimatorSpec(mode=mode, loss=loss, eval_metric_ops=eval_metric_ops)
 
-def main():
+def main(argv):
     """Program entrance
     """
     parser = argparse.ArgumentParser()
@@ -93,7 +93,7 @@ def main():
     # run_config = tf.estimator.RunConfig()
     # run_config = run_config.replace(model_dir=hparams.job_dir)
     tf.logging.info("MODEL_DIR: %s", hparams.job_dir)
-    util.recreate_folder(hparams.job_dir)
+    # util.recreate_folder(hparams.job_dir)
 
     tf.logging.info("loading mnist dataset")
     print("loading mnist dataset")
@@ -115,7 +115,7 @@ def main():
         num_epochs=None,
         shuffle=True)
     tf.logging.info("model graph setup")
-    mnist_classifier.train(input_fn=train_input_fn, steps=50)
+    mnist_classifier.train(input_fn=train_input_fn, steps=30000)
 
     # Evaluate
     eval_input_fn = tf.estimator.inputs.numpy_input_fn(
