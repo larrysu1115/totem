@@ -17,7 +17,7 @@ gsutil rm -r gs://bk_tina/mnist_1
 BUCKET_NAME=stagem    
 JOB_NAME=mnist_6
 OUTPUT_PATH=gs://$BUCKET_NAME/$JOB_NAME
-REGION=asia-east1
+REGION=us-central1
 
 gcloud ml-engine jobs submit training $JOB_NAME \
     --job-dir $OUTPUT_PATH \

@@ -101,3 +101,4 @@ ENV/
 .mypy_cache/
 .vscode
 MNIST-data
+cifar10_data
