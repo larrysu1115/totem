@@ -38,9 +38,8 @@ tensorboard --logdir=$OUTPUT_PATH
 
 testing date : `2018-03-30`
 
-
-| scale tier | batch size | sec/batch | examples/sec | steps   | loss
-|           -|           -|          -|             -|        -|
-| local      | 128        | 0.3       |              |         |
-| basic_gpu  | 128        | 0.031     | 4100         | 100,000 | 
+| scale tier | batch size | sec/batch | examples/sec | steps   | loss |
+| -          | -          | -         | -            | -       | -    |
+| local      | 128        | 0.3       |              |         |      |
+| basic_gpu  | 128        | 0.031     | 4100         | 100,000 |      |
 
